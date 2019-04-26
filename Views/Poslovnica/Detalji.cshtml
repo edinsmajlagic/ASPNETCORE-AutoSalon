@@ -1,0 +1,67 @@
+﻿@model PoslovnicaDetaljiVM
+@{
+    ViewData["Title"] = "Detalji";
+}
+
+<div class="d-flex mt-4">
+    <div class="w-50">
+        <dl>
+            <dt class="w-100">
+                <img src="~/images/Poslovnice/@Model.SlikaUrl" class="img-thumbnail" />
+            </dt>
+        </dl>
+    </div>
+
+    <div class="ml-5 w-50">
+
+        <dl class="w-100 h-100">
+            <div class="row mb-3">
+
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Naziv)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Naziv)
+
+                </dd>
+            </div>
+
+            <div class="row mb-3">
+
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Grad)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Grad)
+                </dd>
+            </div>
+
+            <div class="row mb-3">
+
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Adresa)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Adresa)
+                </dd>
+            </div>
+
+            <div class="row mb-3">
+
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.KontaktTelefon)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.KontaktTelefon)
+                </dd>
+            </div>
+
+        </dl>
+        @if (User.IsInRole("Administrator"))
+        {
+        <a asp-action="Uredi" asp-route-PoslovnicaId="@Model.PoslovnicaID" class="btn btn-outline-warning ml-5">Uredi</a>
+        }
+        <a asp-action="Index" class="float-lg-left btn btn-outline-danger mr-2">Vrati se nazad</a>
+
+    </div>
+</div>

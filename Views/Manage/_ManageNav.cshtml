@@ -1,0 +1,30 @@
+﻿@using AutoSalon.Views.Manage
+@inject SignInManager<ApplicationUser> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+
+
+<ul class="nav flex-column">
+
+    <li class="nav-item">
+        <a class="nav-link  btn-outline-primary" asp-action="Index">Profil</a>
+    </li>
+
+
+
+    <li class="nav-item">
+        <a class="nav-link btn-outline-primary" asp-action="ChangePassword">Lozinka</a>
+    </li>
+    @if (hasExternalLogins)
+    {
+        <li class="nav-item">
+           <a class="nav-link btn-outline-primary" asp-action="ExternalLogins">External logins</a>
+        </li>
+    }
+    <li class="nav-item">
+    <a class="nav-link btn-outline-primary" asp-action="TwoFactorAuthentication">Two-factor autentifikacija</a>
+    </li>
+
+
+</ul>

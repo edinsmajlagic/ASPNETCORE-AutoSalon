@@ -1,0 +1,134 @@
+﻿@model KorisnikDetaljiVM
+@{
+    ViewData["Title"] = "Detalji";
+}
+
+<h2>Detalji</h2>
+<a asp-action="Index" class="btn btn-outline-danger mr-2">Vrati se nazad</a>
+
+<div class="d-flex mt-4">
+
+    <div class="w-50">
+        <dl>
+            <dt class="w-100">
+                <img src="~/images/Korisnici/@Model.SlikaURL" class="img-thumbnail" />
+            </dt>
+        </dl>
+    </div>
+
+    <div class="ml-5 w-50">
+
+        <dl class="w-100 h-100">
+            <div class="row mb-3">
+
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Ime)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Ime)
+
+                </dd>
+            </div>
+            <div class="row mb-3">
+
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Prezime)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Prezime)
+
+                </dd>
+            </div>
+            <div class="row mb-3">
+
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.DatumRodjenja)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.DatumRodjenja)
+                </dd>
+            </div>
+            <div class="row mb-3">
+
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Grad)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Grad)
+                </dd>
+            </div>
+
+            <div class="row mb-3">
+
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Adresa)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Adresa)
+                </dd>
+            </div>
+
+            <div class="row mb-3">
+
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.KontaktTelefon)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.KontaktTelefon)
+                </dd>
+            </div>
+            <div class="row mb-3">
+
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.BrojKupovina)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.BrojKupovina)
+                </dd>
+            </div>
+            <div class="row mb-3">
+
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.BrojIznajmljivanja)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.BrojIznajmljivanja)
+                </dd>
+            </div>
+            @if (Model.TipKorisnika == "Klijent")
+            {
+                <div class="row mb-3">
+
+
+                    <dd>
+                        <a asp-action="DodijelaRole" asp-route-KorisnikID="@Model.KorisnikID" class="btn btn-outline-danger mr-2">Dodijeli rolu "Uposlenik"</a>
+
+                    </dd>
+                </div>
+            }
+            @if (Model.TipKorisnika=="Uposlenik")
+            {
+                <div class="row mb-3">
+
+
+                    <dd>
+                        <a asp-action="UkloniRole" asp-route-KorisnikID="@Model.KorisnikID" class="btn btn-outline-danger mr-2">Ukloni rolu "Uposlenik"</a>
+
+                    </dd>
+                </div>
+            }
+        </dl>
+
+
+    </div>
+</div>
+
+<div class="AjaxDiv">
+
+</div>
+
+<script>
+    $.ajax({
+        url:"@Url.Action()"
+    })
+</script>
